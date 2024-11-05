@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Face Detection</title>
+		<style>
+			canvas {
+				border: 1px solid black;
+			}
+		</style>
+		
+		<!-- Service Worker Warmup [start] -->
+		<script src="./js/faceapi_warmup.js"></script>
+		<script src="./js/face-api.min.js"></script>
+		<!-- Service Worker Warmup [end  ] -->
+		
+	</head>
+	<body>
+		<script>
+			function urlReplace(url) {
+				window.location.replace(url); 
+			}
+		</script>
+		<a href="#" onclick="urlReplace('index.html')">index</a><br>
+		
+		<video id="video" style="display:block;" width="640" height="480" autoplay></video>
+		<canvas id="canvas" style="display:none;"></canvas>
+		<canvas id="canvas2" style="display:none;"></canvas>
+		<canvas id="canvas3" style="display:none;"></canvas>
+		<canvas id="canvas_output" style="display:none;" style="height: 450px; width: auto;"></canvas>
+		
+		<script>
+			// Store functions in an array
+			var warmup_completed = [camera_start, video_face_detection];
+			var face_detector_options_setup = {
+				inputSize: 128,
+				scoreThreshold: 0.1, // 0.8 = 80%
+				maxDetectedFaces: 1,
+			};
+		</script>
+	</body>
+</html>
