@@ -5,8 +5,80 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Face Detection</title>
 		<style>
+			/* General reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f4f4f9;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				flex-direction: column;
+				color: #333;
+			}
+
+			/* Centering and spacing */
+			h1 {
+				font-size: 2rem;
+				margin-bottom: 20px;
+			}
+
+			/* Link styles */
+			a {
+				font-size: 1rem;
+				text-decoration: none;
+				color: #007bff;
+				margin-bottom: 20px;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			/* Video container */
+			#video {
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				max-width: 100%;
+				width: 640px;
+			}
+
+			/* Canvas for drawing output */
+			#canvas_output {
+				display: block;
+				width: 640px;
+				height: 480px;
+				border-radius: 8px;
+				border: 2px solid #333;
+				background-color: rgba(255, 255, 255, 0.7);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+				margin-top: 20px;
+			}
+
+			/* Hide unused canvas elements */
 			canvas {
-				border: 1px solid black;
+				display: none;
+				width:100%;
+				position:absolute;
+			}
+
+			/* Responsive video */
+			@media (max-width: 768px) {
+				#video {
+					width: auto;
+					height: 100%;
+				}
+
+				#canvas_output {
+					width: 100%;
+					max-width: 480px;
+				}
 			}
 		</style>
 		
@@ -14,22 +86,24 @@
 		<script src="./js/faceapi_warmup.js"></script>
 		<script src="./js/face-api.min.js"></script>
 		<!-- Service Worker Warmup [end  ] -->
-		
-	</head>
-	<body>
 		<script>
 			function urlReplace(url) {
 				window.location.replace(url); 
 			}
 		</script>
-		<a href="#" onclick="urlReplace('index.html')">index</a><br>
+	</head>
+	<body>
+		<h1>Face Detection</h1>
+		<a href="#" onclick="urlReplace('index.html')">Go to Index</a><br>
 		
-		<video id="video" style="display:block;" width="640" height="480" autoplay></video>
-		<canvas id="canvas" style="display:none;"></canvas>
-		<canvas id="canvas2" style="display:none;"></canvas>
-		<canvas id="canvas3" style="display:none;"></canvas>
-		<canvas id="canvas_output" style="display:none;" style="height: 450px; width: auto;"></canvas>
-		
+		<div style="width:100vw;padding: 10px;display: flex;">
+			<video id="video" style="display:block;" width="640" height="480" autoplay></video>
+			<canvas id="canvas" style="display:none;"></canvas>
+			<canvas id="canvas2" style="display:none;"></canvas>
+			<canvas id="canvas3" style="display:none;"></canvas>
+			<canvas id="canvas_output" style="display:none;"></canvas>
+		</div>
+
 		<script>
 			// Store functions in an array
 			var warmup_completed = [camera_start, video_face_detection];

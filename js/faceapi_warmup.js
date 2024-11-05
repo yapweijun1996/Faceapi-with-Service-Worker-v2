@@ -130,7 +130,7 @@ function draw_face_box(canvas_id, box, confidence) {
         canvas.width = video.videoWidth;  // Use video.videoWidth for accurate dimensions
         canvas.height = video.videoHeight; // Use video.videoHeight for accurate dimensions
         // Optional: Adjust canvas position using CSS
-        canvas.style.marginTop = `-${video.videoHeight}px`; // Move canvas up by video height if needed
+        //canvas.style.marginTop = `-${video.videoHeight}px`; // Move canvas up by video height if needed
 
         canvas.style.display = "block";
         console.log("draw_face_box start");
@@ -189,7 +189,7 @@ function draw_face_landmarks() {
 		// Set canvas dimensions to match video dimensions
 		canvas.width = video.videoWidth;  // Use video.videoWidth for accurate dimensions
 		canvas.height = video.videoHeight; // Use video.videoHeight for accurate dimensions// Optional: Adjust canvas position using CSS
-		canvas.style.marginTop = `-${video.videoHeight}px`; // Move canvas up by video height if needed
+		//canvas.style.marginTop = `-${video.videoHeight}px`; // Move canvas up by video height if needed
 		
 		// Get the landmarks
 		var landmarks = event.data.data.detections[0][0].landmarks._positions;
